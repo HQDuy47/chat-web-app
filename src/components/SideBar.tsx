@@ -18,9 +18,9 @@ interface SideBarProps {
 
 const navItems = [
   { path: "/properties", label: "PROPERTIES", icon: faHouse },
-  { path: "/", label: "MESSAGES", icon: faMessage },
+  { path: "/", label: "CHAT", icon: faMessage },
   { path: "/calendar", label: "CALENDAR", icon: faCalendar },
-  { path: "/offers", label: "TAGS", icon: faTag },
+  { path: "/offers", label: "OFFERS", icon: faTag },
   { path: "/documents", label: "DOCUMENTS", icon: faFileLines },
   { path: "/settings", label: "SETTINGS", icon: faGear },
 ];
@@ -42,7 +42,7 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
       <div
         className={`fixed inset-y-0 left-0 z-30 bg-[#dadaf6] text-white transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } transition-transform duration-300 py-4 ease-in-out lg:translate-x-0 lg:static lg:inset-0 h-screen w-full lg:w-56`}
+        } transition-transform duration-300 py-4 ease-in-out lg:translate-x-0 lg:static lg:inset-0 h-screen w-full lg:w-52`}
       >
         <div className="flex flex-col items-center justify-center mt-6">
           <div className="border-8 bg-white rounded-full p-1 shadow-xl">
@@ -57,7 +57,7 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
         </div>
-        <nav className="flex flex-col space-y-4 mt-10 text-[#b9b9b9] text-sm">
+        <nav className="flex flex-col space-y-4 mt-10 text-[#b9b9b9] text-sm font-bold">
           {navItems.map((item) => (
             <SideBarItem
               key={item.path}
