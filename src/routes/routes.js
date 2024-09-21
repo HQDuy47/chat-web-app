@@ -8,6 +8,7 @@ import SettingsPage from "../pages/SettingsPage";
 // Public routes
 const publicRoutes = [
   { path: "/", component: ChatPage },
+  { path: "/room/:id", component: ChatPage },
   { path: "/calendar", component: CalendarPage },
   { path: "/documents", component: DocumentsPage },
   { path: "/offers", component: OffersPage },

@@ -17,8 +17,8 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
   return (
     <div className="flex h-screen bg-gray-100 font-mono subpixel-antialiased">
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-      <div className="flex-1 p-4">
-        <div className=" flex flex-row justify-between items-center pr-4 gap-4">
+      <div className="flex-1 flex flex-col p-4">
+        <div className="flex flex-row justify-between items-center pr-4 gap-4">
           <button
             className="text-gray-500 focus:outline-none lg:hidden"
             onClick={toggleSidebar}
@@ -43,7 +43,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
             <div className="flex flex-row items-center">
               <p>Status:</p>
               <div className="relative inline-block w-28">
-                <select className="block appearance-none w-full bg-gray-100 px-2  pr-8 leading-tight focus:outline-none focus:shadow-outline">
+                <select className="block appearance-none w-full bg-gray-100 px-2 pr-8 leading-tight focus:outline-none focus:shadow-outline">
                   <option value="0">Sale</option>
                   <option value="1">Active</option>
                 </select>
@@ -61,7 +61,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
             <FontAwesomeIcon icon={faBell} className="h-4 w-4 text-gray-400" />
           </div>
         </div>
-        <div className="pt-4 pl-6">{children}</div>
+        <div className="flex-1 pt-4 pl-6 overflow-auto">{children}</div>
       </div>
     </div>
   );

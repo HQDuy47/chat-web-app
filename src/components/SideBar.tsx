@@ -10,6 +10,9 @@ import {
   faGear,
 } from "@fortawesome/free-solid-svg-icons";
 import SideBarItem from "./SideBarItem";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getAuthUser } from "../redux/apiRequest";
 
 interface SideBarProps {
   isOpen: boolean;
@@ -26,7 +29,16 @@ const navItems = [
 ];
 
 export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
+  const authUser = useSelector(
+    (state: any) => state?.authUser?.authUser?.currentUser
+  );
+
   const location = useLocation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    getAuthUser(dispatch);
+  }, [dispatch]);
 
   return (
     <div>
@@ -47,13 +59,13 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
         <div className="flex flex-col items-center justify-center mt-6">
           <div className="border-8 bg-white rounded-full p-1 shadow-xl">
             <img
-              src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww"
-              alt="Sidebar Banner"
+              src={authUser.avatarUrl}
               className="h-16 w-16 object-cover rounded-full"
+              alt="avatar"
             />
           </div>
           <div className="flex mt-2 gap-1 flex-row justify-center items-center text-black">
-            <p className="text-black text-sm">Jimmy Hendrix</p>
+            <p className="text-black text-sm">{authUser.username}</p>
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
         </div>
@@ -64,7 +76,13 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
               path={item.path}
               label={item.label}
               icon={item.icon}
-              isActive={location.pathname === item.path}
+              isActive={
+                location.pathname === item.path ||
+                (!navItems.some(
+                  (navItem) => navItem.path === location.pathname
+                ) &&
+                  item.path === "/")
+              }
             />
           ))}
         </nav>
