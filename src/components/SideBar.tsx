@@ -11,21 +11,21 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import SideBarItem from "./SideBarItem";
-// import { useSelector, useDispatch } from "react-redux";
-// import { useEffect } from "react";
-// import { getAuthUser } from "../redux/apiRequest";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { getAuthUser } from "../redux/apiRequest";
 
 interface SideBarProps {
   isOpen: boolean;
   toggleSidebar: () => void;
 }
 
-const authUser = {
-  id: 1,
-  username: "Jimmy Hendrix",
-  avatarUrl:
-    "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww",
-};
+// const authUser = {
+//   id: 1,
+//   username: "Jimmy Hendrix",
+//   avatarUrl:
+//     "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww",
+// };
 
 const navItems = [
   { path: "/properties", label: "PROPERTIES", icon: faHouse },
@@ -37,16 +37,16 @@ const navItems = [
 ];
 
 export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
-  // const authUser = useSelector(
-  //   (state: any) => state?.authUser?.authUser?.currentUser
-  // );
+  const authUser = useSelector(
+    (state: any) => state?.authUser?.authUser?.currentUser
+  );
 
   const location = useLocation();
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   getAuthUser(dispatch);
-  // }, [dispatch]);
+  useEffect(() => {
+    getAuthUser(dispatch);
+  }, [dispatch]);
 
   return (
     <div>

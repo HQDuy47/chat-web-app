@@ -21,13 +21,12 @@ interface ChatBox {
 }
 
 interface ChatBoxState {
-  chatBoxes: ChatBox[] | null; // Có thể là null hoặc một mảng ChatBox
+  chatBoxes: ChatBox[] | null;
   selectedChatBox: ChatBox | null;
   isFetching: boolean;
   error: boolean;
 }
 
-// Cập nhật initialState
 const initialState: ChatBoxState = {
   chatBoxes: null,
   selectedChatBox: null,
@@ -76,7 +75,6 @@ const chatBoxSlice = createSlice({
         state.chatBoxes?.findIndex((box) => box.id === chatBoxId) ?? -1;
 
       if (chatBoxIndex !== -1 && state.chatBoxes) {
-        // Nếu chatBoxes không phải null, thêm tin nhắn mới
         state.chatBoxes[chatBoxIndex].messages.push(newMessage);
       }
 
@@ -90,7 +88,6 @@ const chatBoxSlice = createSlice({
   },
 });
 
-// Xuất các action và reducer
 export const {
   getChatBoxesStart,
   getChatBoxesSuccess,
