@@ -72,12 +72,16 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
       >
         <div className="flex flex-col items-center justify-center mt-6">
           <div className="border-8 bg-white rounded-full p-1 shadow-xl">
-            <img
-              loading="lazy"
-              src={authUser.avatarUrl}
-              className="h-16 w-16 object-cover rounded-full"
-              alt="avatar"
-            />
+            {authUser ? (
+              <img
+                loading="lazy"
+                src={authUser.avatarUrl}
+                className="h-16 w-16 object-cover rounded-full"
+                alt="avatar"
+              />
+            ) : (
+              <div className="h-16 w-16  rounded-full"></div> // Placeholder nếu chưa có authUser
+            )}
           </div>
           <div className="flex mt-2 gap-1 flex-row justify-center items-center text-black">
             <p className="text-black text-sm">{authUser.username}</p>
