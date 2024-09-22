@@ -12,7 +12,6 @@ export interface Message {
   content: string;
   avatar: string;
   date: string;
-  count: number;
 }
 
 export interface ChatBox {
@@ -23,9 +22,9 @@ export interface ChatBox {
   avatar: string;
   date: string;
   count: number;
+  isRead: boolean;
 }
 
-// Ví dụ sử dụng
 // const users: User[] = [
 //   {
 //     id: "user1",

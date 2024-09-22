@@ -14,14 +14,6 @@ const publicRoutes = [
   { path: "/offers", component: OffersPage },
   { path: "/properties", component: PropertiesPage },
   { path: "/settings", component: SettingsPage },
-  // { path: "/", component: HomePage },
-  // { path: "/", component: HomePage },
-  // { path: "/", component: WelcomePage, layout: null },
-  //   { path: "/landing", component: LandingPage },
-  //   { path: "/story", component: StoryPage },
-  //   { path: "/product", component: ProductPage },
-  //   { path: "/*", component: NotFoundPage, layout: null },
-  //   { path: "/admin", component: AdminPage, layout: HeaderOnly },
 ];
 
 // Private routes

@@ -8,6 +8,7 @@ import {
   faTag,
   faFileLines,
   faGear,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 import SideBarItem from "./SideBarItem";
 // import { useSelector, useDispatch } from "react-redux";
@@ -49,6 +50,12 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
 
   return (
     <div>
+      <button
+        className="fixed z-40 top-2 left-2 lg:hidden text-gray-500  rounded-full p-1 "
+        onClick={toggleSidebar}
+      >
+        <FontAwesomeIcon icon={faBars} className="h-6 w-6" />
+      </button>
       {/* Overlay for mobile view */}
       {isOpen && (
         <div
@@ -59,13 +66,14 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 z-30 bg-[#dadaf6] text-white transform ${
+        className={`shadow-sm fixed inset-y-0 left-0 z-30 bg-[#dadaf6] text-white transform ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } transition-transform duration-300 py-4 ease-in-out lg:translate-x-0 lg:static lg:inset-0 h-screen w-full lg:w-52`}
       >
         <div className="flex flex-col items-center justify-center mt-6">
           <div className="border-8 bg-white rounded-full p-1 shadow-xl">
             <img
+              loading="lazy"
               src={authUser.avatarUrl}
               className="h-16 w-16 object-cover rounded-full"
               alt="avatar"
