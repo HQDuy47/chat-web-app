@@ -80,11 +80,18 @@ export default function SideBar({ isOpen, toggleSidebar }: SideBarProps) {
                 alt="avatar"
               />
             ) : (
-              <div className="h-16 w-16  rounded-full"></div> // Placeholder nếu chưa có authUser
+              <img
+                loading="lazy"
+                src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXZhdGFyfGVufDB8fDB8fHww"
+                className="h-16 w-16 object-cover rounded-full"
+                alt="avatar"
+              />
             )}
           </div>
           <div className="flex mt-2 gap-1 flex-row justify-center items-center text-black">
-            <p className="text-black text-sm">{authUser.username}</p>
+            <p className="text-black text-sm">
+              {authUser ? authUser.username : "Jimmy Hendrix"}
+            </p>
             <FontAwesomeIcon icon={faAngleDown} />
           </div>
         </div>
